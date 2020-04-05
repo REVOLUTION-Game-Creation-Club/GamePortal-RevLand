@@ -1,0 +1,70 @@
+// Launcher.odl : type library source for ActiveX Control project.
+
+// This file will be processed by the Make Type Library (mktyplib) tool to
+// produce the type library (Launcher.tlb) that will become a resource in
+// Launcher.ocx.
+
+#include <olectl.h>
+#include <idispids.h>
+
+[ uuid(88CE394C-B688-49DE-A531-BDDCFA9A4549), version(1.0),
+  helpfile("Launcher.hlp"),
+  helpstring("Launcher ActiveX Control module"),
+  control ]
+library LAUNCHERLib
+{
+	importlib(STDOLE_TLB);
+	importlib(STDTYPE_TLB);
+
+	//  Primary dispatch interface for CLauncherCtrl
+
+	[ uuid(109B3172-3DF4-45F6-85BC-B5C055B3D043),
+	  helpstring("Dispatch interface for Launcher Control"), hidden ]
+	dispinterface _DLauncher
+	{
+		properties:
+			// NOTE - ClassWizard will maintain property information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_PROP(CLauncherCtrl)
+			//}}AFX_ODL_PROP
+
+		methods:
+			// NOTE - ClassWizard will maintain method information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_METHOD(CLauncherCtrl)
+			[id(1)] void LauchContent(BSTR strUserID, BSTR strUserName, BSTR strContentName, long dwVersion, long dwScore);
+			//}}AFX_ODL_METHOD
+
+			[id(DISPID_ABOUTBOX)] void AboutBox();
+	};
+
+	//  Event dispatch interface for CLauncherCtrl
+
+	[ uuid(4C547A57-5E8C-4040-AC2D-2695FAFCF928),
+	  helpstring("Event interface for Launcher Control") ]
+	dispinterface _DLauncherEvents
+	{
+		properties:
+			//  Event interface has no properties
+
+		methods:
+			// NOTE - ClassWizard will maintain event information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_EVENT(CLauncherCtrl)
+			//}}AFX_ODL_EVENT
+	};
+
+	//  Class information for CLauncherCtrl
+
+	[ uuid(DD0B32E9-16DC-4C00-8238-8839594370A4),
+	  helpstring("Launcher Control"), control ]
+	coclass Launcher
+	{
+		[default] dispinterface _DLauncher;
+		[default, source] dispinterface _DLauncherEvents;
+	};
+
+
+	//{{AFX_APPEND_ODL}}
+	//}}AFX_APPEND_ODL}}
+};

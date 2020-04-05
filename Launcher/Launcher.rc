@@ -1,0 +1,270 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Korean resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+#ifdef _WIN32
+LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
+#pragma code_page(949)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "1 TYPELIB ""Launcher.tlb""\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,8
+ PRODUCTVERSION 1,0,0,8
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "\0"
+            VALUE "CompanyName", "REVOLUTION\0"
+            VALUE "FileDescription", "Launcher ActiveX Control Module\0"
+            VALUE "FileVersion", "1, 0, 0, 8\0"
+            VALUE "InternalName", "Launcher\0"
+            VALUE "LegalCopyright", "Copyright (C) 2004\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OLESelfRegister", "\0"
+            VALUE "OriginalFilename", "Launcher.OCX\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "Launcher ActiveX Control Module\0"
+            VALUE "ProductVersion", "1, 0, 0, 8\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ABOUTDLL            ICON    DISCARDABLE     "Launcher.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_LAUNCHER            BITMAP  DISCARDABLE     "LauncherCtl.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX_LAUNCHER DIALOG DISCARDABLE  34, 22, 260, 55
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About Launcher Control"
+FONT 8, "MS Sans Serif"
+BEGIN
+    ICON            IDI_ABOUTDLL,IDC_STATIC,10,10,20,20
+    LTEXT           "Launcher Control, Version 1.0",IDC_STATIC,40,10,170,8
+    LTEXT           "Copyright (C) 2004, REVOLUTION",IDC_STATIC,40,25,170,8
+    DEFPUSHBUTTON   "OK",IDOK,221,7,32,14,WS_GROUP
+END
+
+IDD_PROPPAGE_LAUNCHER DIALOG DISCARDABLE  0, 0, 250, 62
+STYLE WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "TODO: Place controls to manipulate properties of Launcher Control on this dialog.",
+                    IDC_STATIC,7,25,229,16
+END
+
+IDD_INSTALL_STEP1_DLG DIALOGEX 0, 0, 234, 114
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "인스톨 위저드 시작"
+FONT 10, "굴림", 0, 0, 0x1
+BEGIN
+    GROUPBOX        "레브 게임 설치",IDC_STATIC,7,7,220,55
+    LTEXT           "본 게임은 경북대학교 전전컴 학부 동아리인 ""레볼루션""에서 제작하였습니다. 대학에 들어와 게임을 만들고 싶다는 맘만으로 공부해가며 만들었습니다. 부족함 부분이 많이 있지만, 아무쪼록 재미있게 게임을 즐기시기 바랍니다.",
+                    IDC_STATIC,13,22,205,32
+    EDITTEXT        IDC_INSTALL_PATH_EDIT,13,83,142,16,ES_AUTOHSCROLL | 
+                    ES_READONLY | NOT WS_BORDER,WS_EX_STATICEDGE
+    GROUPBOX        "대상 폴더",IDC_STATIC,7,66,220,41
+    PUSHBUTTON      "찾아보기",IDC_FIND_BTN,167,83,50,16
+END
+
+IDD_INSTALL_STEP2_DLG DIALOG DISCARDABLE  0, 0, 234, 114
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "설치 마법사"
+FONT 10, "굴림"
+BEGIN
+    CONTROL         "Progress1",IDC_DOWN_PROGRESS,"msctls_progress32",
+                    PBS_SMOOTH,62,25,156,9
+    CONTROL         "Progress2",IDC_UNZIP_PROGRESS,"msctls_progress32",
+                    PBS_SMOOTH,62,54,156,9
+    GROUPBOX        "다운로드 진행 상황",IDC_STATIC,7,7,220,100
+    PUSHBUTTON      "설치 시작",IDC_INSTALL_BTN,165,82,53,17
+    LTEXT           "Static",IDC_DOWN_STATIC,62,40,156,8
+    LTEXT           "Static",IDC_UNZIP_STATIC,62,69,156,8
+    LTEXT           "파일 다운로드",IDC_STATIC,14,25,47,8
+    LTEXT           "파일 설치",IDC_STATIC,14,54,47,8
+END
+
+IDD_UPDATE_DLG DIALOG DISCARDABLE  0, 0, 234, 146
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "자동 업데이트"
+FONT 10, "굴림"
+BEGIN
+    GROUPBOX        "업데이트 진행 상황",IDC_STATIC,7,7,220,109
+    CONTROL         "Progress1",IDC_UPDATE_VER_PROGRESS,"msctls_progress32",
+                    PBS_SMOOTH,63,25,155,9
+    CONTROL         "Progress1",IDC_UPDATE_DOWN_PROGRESS,"msctls_progress32",
+                    PBS_SMOOTH,63,53,155,9
+    CONTROL         "Progress2",IDC_UPDATE_UNZIP_PROGRESS,"msctls_progress32",
+                    PBS_SMOOTH,63,82,155,9
+    LTEXT           "Static",IDC_UPDATE_DOWN_STATIC,63,68,155,8
+    LTEXT           "Static",IDC_UPDATE_UNZIP_STATIC,63,97,155,8
+    LTEXT           "버젼 업데이트",IDC_STATIC,14,25,42,8
+    LTEXT           "파일 다운로드",IDC_STATIC,13,53,42,8
+    LTEXT           "파일 업데이트",IDC_STATIC,13,82,42,8
+    LTEXT           "Static",IDC_UPDATE_VER_STATIC,63,40,155,8
+    PUSHBUTTON      "취소",IDC_CANCEL,180,121,47,18
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ABOUTBOX_LAUNCHER, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 253
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_PROPPAGE_LAUNCHER, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 227
+        TOPMARGIN, 7
+    END
+
+    IDD_INSTALL_STEP1_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 227
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 107
+    END
+
+    IDD_INSTALL_STEP2_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 227
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 107
+    END
+
+    IDD_UPDATE_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 227
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 139
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_LAUNCHER            "Launcher Control"
+    IDS_LAUNCHER_PPG        "Launcher Property Page"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_LAUNCHER_PPG_CAPTION "General"
+END
+
+#endif    // Korean resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+1 TYPELIB "Launcher.tlb"
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>Untitled</title>
+
+<script language="javascript">
+function LanchContent(strUserID, strContentName, dwVersion, dwScore)
+{
+ if( document.Launcher != null && document.Launcher.object != null )
+ {
+  document.Launcher.LauchContent(strUserID, strContentName, dwVersion, dwScore);
+ }
+}
+</script>
+
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+
+<p><object classid="clsid:DD0B32E9-16DC-4C00-8238-8839594370A4" id = "Launcher" 
+codebase="launcher.CAB#version=1,0,0,2"
+width=50 height=15> </object>
+ &nbsp;</p>
+
+<a href="javascript:LanchContent('TeleAdam','Yammir', 3, 100);">¾ä¹Ì¸£</a><br>
+<a href="javascript:LanchContent('TeleAdam','shotbomb', 2, 100);">Shot & Bomb</a>
+
+</body>
+
+</html> 
