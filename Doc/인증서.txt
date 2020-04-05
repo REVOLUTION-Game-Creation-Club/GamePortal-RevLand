@@ -1,0 +1,246 @@
+게임중 고도리를 먼저올리겠습니다.
+
+ 
+
+게임에 필요한 구성 요소는
+
+ 
+
+1.웹 실행(ATL Com) - 인증서
+
+ 
+
+2.버젼 체크용 Server & Client
+
+ 
+
+3.게임 Server
+
+ 
+
+4.게임 Client
+
+ 
+
+이렇게 내가지로 구성이 됩니다. 우선 적으로 1번에 해당하는 인증서를 올리겠습니다.
+
+=============================================================================================================
+
+1.웹 실행(ATL Com)
+
+ 
+
+ActiveX로 작업을 하려 했다가 우선 웹실행은 간단하게 하려고 ATL을 이용했습니다.
+
+ATL이 ActiveX보다 좀 무겁긴 하지만. 잘만 이용하면 더 빠른 속도로 코딩을 할 수 있어 좋은거죠
+
+뭐.. API로 작업하냐 MFC로 작업하냐... 뭐.. 이런거?  물론 다른 점도 많이 있지만여..
+
+ 
+
+웹 실행 구조는 아래와 같다.
+
+익스 플로에서 이 ATL이 실행되면.. 버튼을 Create하기 전에 내 컴에 게임 Client가 설치 됬는지 알아보고
+
+없으면 다운받고 있으면 실행(버튼 클릭)하는 순으로 한다.
+
+ 
+
+====================================================================================================
+
+우선 기본적으로
+
+ 
+
+ATL Program을 하기 위해서
+
+ 
+
+Visual Stdio (이하 VS)에서 ATL COM AppWizard를 선택한다.
+
+ 
+
+Project Name은 자기가 정하기 나름인데. 난 WebExecuteGodori으로 했다.
+
+ 
+
+DLL로 만들기 위해 Dynamic Link Lubrary(DLL)을 선택하고 Finish한다.
+
+ 
+
+기본 폼에 버튼을 넣기 위해.. ClassView에 마우스 오른쪽 버튼을 누르고 ATL Object Wizard를 선택한다.
+
+ 
+
+버튼을 위해 Control에서 Full Control을 선택한다.
+
+ 
+
+다음에 Interface로 쓸 이름을 정하는 폼이 나오는데 여기서 자신이 원하는 이름을 쓴다.
+
+ 
+
+나는 WebExecuteGodori_Button으로 정했다.
+
+ 
+
+그리고나면 ClassView에서 보면 Interface가 생겼을것이다.
+
+ 
+
+그리고.. OnCreate(생성할때..) 함수가 없을시에는  윈도우 메세지를 추가 해야 하는데..
+
+ 
+
+MFC와는 틀려서 클래스 위자드를 실행할순 없고.
+
+ 
+
+내가 원하는 인터페이스에서 마우스 오른쪽 버튼을 누르면 Add Windows message Handler가 있다 이것을 선택하면
+
+ 
+
+윈도우 메세지 들이 보일것이다.
+
+ 
+
+우선 적으로 지금 생성한 Button에서 WM_CREATE즉 OnCreate함수와
+
+ 
+
+버튼을 클릭했을때.. WM_LBUTTONDOWN 즉 OnLButtonDown함수를 Add한다.
+
+ 
+
+OnCreate()함수에서 버튼에 이름을 넣기 위해
+
+ 
+
+m_ctlButton.Create(m_hWnd, rc, _T("FunnyGodori 실행")); 을 하고..
+
+ 
+
+소스에서 보는봐와 같이
+
+ 
+
+//liehacker 자동 실행
+
+        HKEY hRootKey;
+
+        DWORD dwType;
+
+        DWORD dwBytes=100;
+
+        char buffer[100],chExec[150];
+
+ 
+
+        // 이부분은 인스톨 쉴드에서 게임을 설치 하면 Software\\7Frinds\\funnyGodori 에
+
+        // InstallPath의 키 이름으로 설치 폴더를 지정한다.
+
+        RegOpenKeyEx(HKEY_CURRENT_USER,"Software\\7Frinds\\funnyGodori", 0, KEY_ALL_ACCESS, &hRootKey);
+
+        RegQueryValueEx(hRootKey, "InstallPath", 0, &dwType, (LPBYTE)buffer, &dwBytes);
+
+        RegCloseKey(hRootKey);
+
+    
+
+        //게임 업테이트 Client
+
+        wsprintf(chExec,"%s\\AutoDown_Godori.exe",buffer); //UpDate
+
+        //실행 
+
+        ShellExecute(NULL,NULL, chExec, NULL,buffer, SW_SHOWNORMAL);
+
+        
+
+        //자동 페치 프로그램을 찾지 못했을시에는 게임이 설치 되지 않을것으로 판단하고
+
+        //지정 Web에서 게임을 다운받는다.
+
+        if(GetLastError() == ERROR_FILE_NOT_FOUND )
+
+        {
+
+            MessageBox("게임 화일을 다운받습니다. 다운 받은 후 열기를 선택해주세요!!","정보",MB_OK);
+
+            ShellExecute(NULL,NULL,"http://211.198.225.252/download/FunnyGodori_v1.0.exe", NULL,NULL,             SW_SHOWNORMAL);
+
+ 
+
+        }
+
+        //liehacker 자동 실행
+
+를 한다.
+
+ 
+
+물론.. 버튼의 이름을 Explore에서 받아 GetChar()함수로서 Param으로 받아와 이름을 바꿀수도 있다.
+
+이부분은 난중에 추가 설명으로 넣기로 하고.
+
+저 게임 다운로드 Web주소 역시 Param으로 받아와 바꿀수가 있다.
+
+위 소스와 같은 식으로 하면 ATL을 계속 수정해주어야 하기 떄문에 번거러울 것이다.
+
+이부분들은 님들이 추가 해보시고..
+
+제가 추가로 설명을 해 드리겠습니다.
+
+ 
+
+아참.. 그리고 이 ATL을 test하기 위새서는 실행을 하면 Excutable For Debug Session이 나온다. 
+
+ 
+
+그리면 ActiveX Control Test Contanire를 선택한다.
+
+ 
+
+그리고 New Control을 해서 자신이 만든 Interface이름을 찾는다.
+
+ 
+
+그리고 실행을 하면 기본적으로 VS에서 Debuging 하는 방식과 같이 하면된다.
+
+ 
+
+ 
+
+이 모든것이 완성됬으면.. 인증서를 만들어야 웹에서 실행을 할 수 있다.
+
+이부분은 Tip인가 강좌인가에서 내 아이디 hhacker로 검색을 해보시면
+
+자세히 나와있습니다. 하여 
+
+ATL Source와 인증서를 만들때 필요한 화일 완성된 화일을 올려놓겠습니다.
+
+ 
+
+ 
+
+--------------------------------화일 설명..-------------------------------------------
+
+WebExecuteGodori <- ATL Source
+
+인증서 <- 인증서 만드는 화일
+
+WebExecuteGodori_Button <- 만들어진 ATL DLL 및 CAB
+
+--------------------------------화일 설명..-------------------------------------------
+
+ 
+
+너무 모자른거 같은데.. ㅡㅡa 궁금한것이 있으면 리플 달아 주세요..
+
+그리고 허접 왕 허접한 제 홈에 글이라도.. ㅡㅡ; 
+
+ 
+
+http://liehacker.goanygate.com:800
+
