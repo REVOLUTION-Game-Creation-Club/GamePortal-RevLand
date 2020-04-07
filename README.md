@@ -1,4 +1,4 @@
 # GamePortal-RevLand
 
-제작자:김태영
+프로그래밍:김태영
 
